@@ -19,3 +19,20 @@ async function getResult() {
   const obj = await sivecPortal();
   return obj;
 }
+
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "mydb"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  con.query("SELECT * FROM tb_pessoa_fisica", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+  });
+});
